@@ -1,214 +1,213 @@
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.Arrays;
-import java.awt.event.*;
-import java.util.Queue;
-import java.util.Collections;
-import java.util.LinkedList;
+import java.util.List;
+
 /**
- * Class to create Setup Panel. Setup panel is where the user selects the number of players, 
- * chooses each image for each player, selects each players color, and where each player gets 
- * to choose at least 3 destination cards.
- * 
+ * Create the setup panel, where the user selects the number of players, chooses image for each player, selects each
+ * player's color, and where each player gets to choose at least 3 destination cards.
+ *
  * @author Josh Dratler
  * @author Hamza Memon
  * @author Patrick Milano
  * @author Jhoan Esteban Osorno
  * @author Brian Smith
- * @version (1.0) 
- * 
+ * @version (1.0)
  */
 public class Setup extends JPanel {
-
+    
     private static Player[] players;
-
-    private ImageIcon background;
-
+    
+    private ImageIcon background = ResourceLoader.loadImage("setup_background.jpg");
+    
     private JButton twoPlayers = new JButton("Two Players");
     private JButton threePlayers = new JButton("Three Players");
     private JButton fourPlayers = new JButton("Four Players");
     private JLabel instructions = new JLabel();
     private JButton[] buttonArray = {twoPlayers, threePlayers, fourPlayers};
-
-    private Queue<DestinationCard> destCards = new LinkedList<>();
-
-    private JLabel[] destCardsChoices = new JLabel[3];
-    private JButton confirmDestCards = new JButton("Proceed with your selected cards?");
+    
     /**
-     * Constructor for setup panel. Buttons for number of players is initialized, and 
-     * background is set
-     * 
+     * Constructs the setup panel. Buttons for number of players is initialized, and background is set
      */
-    public Setup(){
+    public Setup() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 50, 512));
         setPreferredSize(new Dimension(1280, 1024));
-
-        background = ResourceLoader.loadImage("setup_background.jpg");
-
-        Font font = new Font("TimeRoman", Font.BOLD, 18);
-
-        for(JButton label : buttonArray){
+        
+        Font font = new Font("TimesRoman", Font.BOLD, 18);
+        
+        for(JButton label : buttonArray) {
             label.setForeground(Color.BLACK);
             label.addMouseListener(new Handler());
             label.setHorizontalTextPosition(JLabel.CENTER);
             label.setFont(font);
             add(label);
         }
+        
         Icon instructionsIcon = ResourceLoader.loadImage("instructionsButton.png");
         instructions.setIcon(instructionsIcon);
         instructions.addMouseListener(new Handler());
         add(instructions);
     }
-
+    
     /**
-     * Override method of JPanel. Paints the background the ticket to ride game box cover.
-     * 
+     * Retrieves the players array
+     *
+     * @return array of players.
+     */
+    public static Player[] getPlayers() {
+        return players;
+    }
+    
+    /**
+     * Paints the background of the Ticket to Ride game box cover.
+     *
      * @param g instance of Graphics
      */
     @Override
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         background.paintIcon(this, g, 0, 0);
     }
+    
     /**
-     * Class that allows us to extend mouseAdapter so mouseClicked, 
-     * mouseEntered, and mouseExited can be used
+     * Allows us to extend mouseAdapter so mouseClicked, mouseEntered, and mouseExited can be used
      */
-    private class Handler extends MouseAdapter
-    {
+    private class Handler extends MouseAdapter {
         /**
-         * Override of a mouse adapter method. Allows user to choose
-         * number of players, choose their image, and allows them to 
-         * select their initial destination cards.
-         * 
+         * Allows user to choose number of players, choose their image, and allows them to select their initial
+         * destination cards.
+         *
          * @param e instance of MouseEvent
          */
         @Override
-        public void mouseClicked(MouseEvent e){
-            if (e.getSource().equals(instructions))
-            {//if user clicked on instructions
+        public void mouseClicked(MouseEvent e) {
+            if(e.getSource().equals(instructions)) {
                 Driver.cardLayout.next(Driver.cards);
             }
-            else
-            {
+            else {
                 instructions.setVisible(false);
-                int index = Arrays.asList(buttonArray).indexOf(e.getSource());
-
-                Arrays.asList(buttonArray).forEach((i) -> i.setVisible(false));
-
+                
+                List<JButton> buttonList = Arrays.asList(buttonArray);
+                int index = buttonList.indexOf(e.getSource());
+                buttonList.forEach(i -> i.setVisible(false));
+                
                 File images = ResourceLoader.loadFile("images/playerImages/");
                 File[] dir = images.listFiles();
-                ImageIcon[] imageArray = new ImageIcon[dir.length];
-
-                for(int i = 0; i < imageArray.length; i++){
-                    imageArray[i] = new ImageIcon(dir[i].getAbsolutePath());
+                ImageIcon[] playerImagesArray = new ImageIcon[dir.length];
+                
+                for(int i = 0, length = playerImagesArray.length; i < length; i++) {
+                    playerImagesArray[i] = new ImageIcon(dir[i].getAbsolutePath());
                 }
-
+                
                 String[] possibleColors = {"BLUE", "RED", "GREEN", "BLACK"};
                 JComboBox<String> trainBox = new JComboBox<>(possibleColors);
-                JComboBox<ImageIcon> imageBox = new JComboBox<>(imageArray);
-                //Color col1 = null;
+                JComboBox<ImageIcon> imageBox = new JComboBox<>(playerImagesArray);
                 players = new Player[index + 2];
-
-                for(int i = 0; i < players.length; i++){
+                
+                for(int i = 0, playersLength = players.length; i < playersLength; i++) {
                     JOptionPane.showMessageDialog(null, imageBox, "Choose a picture", JOptionPane.INFORMATION_MESSAGE);
                     ImageIcon img = (ImageIcon) imageBox.getSelectedItem();
-                    imageBox.removeItem(img);//once user has selected an image, remove that image from the selection
-
+                    // Once user has selected an image, remove that image from the selection
+                    imageBox.removeItem(img);
+                    
                     JOptionPane.showMessageDialog(null, trainBox, "Choose a train color", JOptionPane.INFORMATION_MESSAGE);
                     String col = (String) trainBox.getSelectedItem();
-                    trainBox.removeItem(col);//once a user has selected a color, remove that color from the selection
+                    //once a user has selected a color, remove that color from the selection
+                    trainBox.removeItem(col);
+                    
                     Color color = null;
-                    try
-                    {
-                        //change color to written letters
+                    try {
+                        // Change color to written letters
                         color = (Color) Color.class.getField(col.toUpperCase()).get(null);
                     }
-                    catch (NoSuchFieldException | IllegalAccessException e1)
-                    {
+                    catch(NoSuchFieldException | IllegalAccessException e1) {
                         e1.printStackTrace();
                     }
-
+                    
                     players[i] = new Player(i + 1, img, color);
-
+                    
                     DestinationCard[] cardsArray = new DestinationCard[5];
-                    for(int j = 0; j < cardsArray.length; j++){
-                        cardsArray[j] = LeftPanel.destCards.remove();
+                    for(int j = 0, length = cardsArray.length; j < length; j++) {
+                        cardsArray[j] = LeftPanel.destinationCards.remove();
                     }
-                    ImageIcon[] limageArray = new ImageIcon[5];
-                    for(int j = 0; j < limageArray.length; j++){
-                        limageArray[j] = cardsArray[j].getIcon();
+                    
+                    ImageIcon[] imageArray = new ImageIcon[5];
+                    for(int j = 0, length = imageArray.length; j < length; j++) {
+                        imageArray[j] = cardsArray[j].getIcon();
                     }
-                    JComboBox<ImageIcon> destCardBox = new JComboBox<>(limageArray);
-                    //selection boxes for images for user to select.
+                    
+                    JComboBox<ImageIcon> destinationCardBox = new JComboBox<>(imageArray);
                     boolean choosing = true;
                     int cardsAdded = 0;
-
-                    while(choosing){//while the player is still choosing destination cards
-                        JOptionPane.showMessageDialog(null, destCardBox, "Choose a destination card", JOptionPane.INFORMATION_MESSAGE);
-
-                        ImageIcon icon = (ImageIcon) destCardBox.getSelectedItem();
-                        int limdex = Arrays.asList(limageArray).indexOf(icon);
-
-                        DestinationCard card1 = cardsArray[limdex];
-                        players[i].addDestCard(card1);
-
+                    
+                    while(choosing) {
+                        // While the player is still choosing destination cards
+                        JOptionPane.showMessageDialog(null, destinationCardBox, "Choose a destination card", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        ImageIcon icon = (ImageIcon) destinationCardBox.getSelectedItem();
+                        int destinationCardIndex = Arrays.asList(imageArray).indexOf(icon);
+                        
+                        DestinationCard card1 = cardsArray[destinationCardIndex];
+                        players[i].addDestinationCard(card1);
+                        
                         cardsAdded++;
-                        destCardBox.removeItem(icon);
-
-                        if(cardsAdded == 5){//cant have more than 5 destination cards
+                        destinationCardBox.removeItem(icon);
+                        
+                        if(cardsAdded == 5) {
+                            // Can't have more than 5 destination cards
                             choosing = false;
                         }
-                        else if(cardsAdded >= 3){//player needs at least 3 cards, so now give them the option to not add anymore cards
+                        else if(cardsAdded >= 3) {
+                            // Player needs at least 3 cards, so now give them the option to not add anymore cards
                             int response = JOptionPane.showConfirmDialog(null, "Keep adding cards?", "Proceed with current hand?", JOptionPane.YES_NO_OPTION);
-                            if(response == JOptionPane.NO_OPTION){
-                                choosing = false; //if player doesnt want to add anymore cards
+                            if(response == JOptionPane.NO_OPTION) {
+                                // If player doesn't want to add anymore cards
+                                choosing = false;
                             }
                         }
                     }
-
+                    
                 }
+                
                 setVisible(false);
                 Driver.loop.setup();
                 Driver.buy.setup();
-
                 Driver.cardLayout.show(Driver.cards, "Container");
             }
-            ////Driver.loop.run();
         }
-
+        
         /**
-         * Override method of mouselistener. Used in this class to change 
-         * to hand cursor when hovering over number of players
-         * 
+         * Used in this class to change to hand cursor when hovering over number of players
+         *
          * @param e instance from a mouse event
          */
         @Override
-        public void mouseEntered(MouseEvent e){
+        public void mouseEntered(MouseEvent e) {
             setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
-
+        
         /**
-         * Override method of mouselistener. Used in this class to change
-         * back to regular cursor when done hovering over the number of players.
-         * 
-         * 
-         * @param e instance from mouse event 
+         * Used in this class to change back to regular cursor when done hovering over the number of players.
+         *
+         * @param e instance from mouse event
          */
         @Override
-        public void mouseExited(MouseEvent e){
+        public void mouseExited(MouseEvent e) {
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         }
-    }
-    /**
-     * Method to get the players array
-     * 
-     * @return array of players.
-     */
-    public static Player[] getPlayers(){
-        return players;
     }
 }
