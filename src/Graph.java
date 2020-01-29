@@ -2,7 +2,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Calculates if a player has completed a path
+ * Calculates if a player has completed a path.
+ *
+ * @author Josh Dratler
+ * @author Hamza Memon
+ * @author Patrick Milano
+ * @author Jhoan Esteban Osorno
+ * @author Brian Smith
+ * @version (1.0)
  */
 public class Graph {
     

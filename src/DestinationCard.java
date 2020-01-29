@@ -2,8 +2,11 @@ import javax.swing.ImageIcon;
 
 /**
  * Enum to store the destination cards.
- * <p>
- * Each Destination Card enum has a start city, end city, and a point value.
+ *
+ * Each Destination Card has a:
+ * * Start city
+ * * End city
+ * * Point value.
  *
  * @author Josh Dratler
  * @author Hamza Memon
@@ -93,7 +96,7 @@ public enum DestinationCard {
         this.end = end;
         this.value = value;
         
-        // some destinations cards go to two different Frances
+        // Some destinations cards go to two different Frances
         if(end == City.FRANCE1) {
             extraCity = City.FRANCE2;
         }

@@ -43,6 +43,8 @@ public class RightPanel extends JPanel {
     private int techCardIndex;
     
     /**
+     * Constructs the right panel.
+     *
      * Draws and sets train cards, locomotives, player images, and how many points and how many trains they have.
      */
     public RightPanel() {
@@ -96,7 +98,7 @@ public class RightPanel extends JPanel {
      * Paints the user's icon, destination cards (if there are any), technology cards (if there are any), and the
      * user's train cards.
      *
-     * @param g instance of Graphics
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {

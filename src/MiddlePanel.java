@@ -30,7 +30,9 @@ public class MiddlePanel extends JPanel {
     private Route routeOnHover = routes[0];
     
     /**
-     * Constructs the middle panel. Background is initialized to the Ticket to Ride UK map.
+     * Constructs the middle panel.
+     *
+     * Background is initialized to the Ticket to Ride UK map.
      */
     public MiddlePanel() {
         setPreferredSize(new Dimension(568, 850));
@@ -49,7 +51,7 @@ public class MiddlePanel extends JPanel {
      * Fills in claimed routes the color of the player that claimed them, and draws a polygon the color of the route
      * when the mouse is hovering over that route.
      *
-     * @param g instance of Graphics class
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {

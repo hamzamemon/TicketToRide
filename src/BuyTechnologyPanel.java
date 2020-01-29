@@ -15,14 +15,21 @@ import java.util.Collections;
 /**
  * Technologies change the way that points are added to the players, the ways routes are purchased, the way
  * locomotives are purchased, and they also unlock routes that were previously unavailable to the player.
- * <p>
+ *
  * To buy a technology, the player clicks on the Buy Technology button that is on the BottomPanel. The currency for
  * technologies is paid in locomotive cards, or an appropriate amount of regular train cards that the player can use
  * as well.
- * <p>
+ *
  * When a technology is purchased, the cards used as currency are removed from the player's hand and in most cases,
  * added to the discarded pile, Then, the player obtains the technology, it remains in their hand for the rest of the
  * game unless otherwise specified.
+ *
+ * @author Josh Dratler
+ * @author Hamza Memon
+ * @author Patrick Milano
+ * @author Jhoan Esteban Osorno
+ * @author Brian Smith
+ * @version (1.0)
  */
 public class BuyTechnologyPanel extends JPanel {
     
@@ -39,8 +46,9 @@ public class BuyTechnologyPanel extends JPanel {
     private ImageIcon shelves = ResourceLoader.loadImage("shelves.jpg");
     
     /**
-     * Initializes the fields of BuyTechnologyPanel, and also constructs the panel itself.
-     * Makes the panel visible.
+     * Constructs the buy technology panel.
+     *
+     * Shows technologies for player to buy.
      */
     public BuyTechnologyPanel() {
         setPreferredSize(new Dimension(1280, 1024));
@@ -81,6 +89,8 @@ public class BuyTechnologyPanel extends JPanel {
     
     /**
      * Display and update the display of the technology cards as they are purchased.
+     *
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {

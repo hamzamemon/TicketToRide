@@ -57,8 +57,9 @@ public class BuyRoutePanel extends JPanel {
     private ImageIcon bottomBackground = ResourceLoader.loadImage("claiming_background2.jpg");
     
     /**
-     * Constructor for objects of the buy route panel. Initializes background, draws train cards, draw two panels,
-     * draws selected train cards, draws back arrow and complete purchase button.
+     * Constructs the buy route panel.
+     *
+     * Initializes background, draws train cards, two panels, back arrow and complete purchase button.
      */
     public BuyRoutePanel() {
         setPreferredSize(new Dimension(1280, 1024));
@@ -138,7 +139,7 @@ public class BuyRoutePanel extends JPanel {
     /**
      * Allows objects to be painted to the screen, like the length route and color they are looking to fill.
      *
-     * @param g instance of Graphics class.
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {

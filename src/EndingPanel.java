@@ -16,15 +16,15 @@ import java.util.Collections;
 
 /**
  * Creates the ending screen that displays the winners of the game.
- * <p>
+ *
  * The winner is displayed at the top, and the user may cycle through the rest of the players and view their stats.
  *
- * @author Jhoan Osorno
- * @author Pat Milano
- * @author Brian Smith
- * @author Hamza Memon
  * @author Josh Dratler
- * @version 1.0
+ * @author Hamza Memon
+ * @author Patrick Milano
+ * @author Jhoan Esteban Osorno
+ * @author Brian Smith
+ * @version (1.0)
  */
 public class EndingPanel extends JPanel {
     
@@ -47,8 +47,9 @@ public class EndingPanel extends JPanel {
     private ImageIcon[] places = {secondPlace, thirdPlace, fourthPlace};
     
     /**
-     * Constructor for the EndingPanel object, sets the dimensions of the Panel and retrieves
-     * the arrow assets
+     * Constructs the ending panel.
+     *
+     * Sets the dimensions of the Panel and retrieves the arrow assets
      */
     public EndingPanel() {
         setPreferredSize(new Dimension(1280, 1024));
@@ -106,7 +107,7 @@ public class EndingPanel extends JPanel {
      * Handles the painting of the panel. Shows the icons of the players involved, and the information regarding
      * their stats by the end of the game
      *
-     * @param g the Graphics object that handles painting
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {

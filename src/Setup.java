@@ -75,7 +75,7 @@ public class Setup extends JPanel {
     /**
      * Paints the background of the Ticket to Ride game box cover.
      *
-     * @param g instance of Graphics
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {

@@ -1,14 +1,18 @@
 import javax.swing.ImageIcon;
 
 /**
- * Enum to store all the technologies in the game that stores the quantity of the card and the cost.
+ * Enum to store all the technologies in the game.
  *
+ * Each technology has a:
+ * * Quantity
+ * * Cost
+ *
+ * @author Josh Dratler
  * @author Hamza Memon
+ * @author Patrick Milano
  * @author Jhoan Esteban Osorno
  * @author Brian Smith
- * @author Patrick Milano
- * @author Josh Dratler
- * @version 1.0
+ * @version (1.0)
  */
 public enum Technology {
     

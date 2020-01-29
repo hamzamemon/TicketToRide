@@ -20,11 +20,13 @@ import java.util.List;
 
 /**
  * Allows the player to convert any four Train Cards (or locomotive, as per the rules) into a locomotive by trading them.
- * These "locomotives" are not drawn from the deck, but rather the Train Cards are used in their stead. The exception
- * to the cost is if the player owns the Booster technology, which allows them to trade in one less train card (3
- * instead of 4) if they so wish. Discarded trainCards are added to the Player.discardedTrainCards ArrayList, and
- * when the purchased "locomotive" is spent, it is not added to the Player.discardedTrainCards ArrayList, because it
- * technically does not exist.
+ * These "locomotives" are not drawn from the deck, but rather the Train Cards are used in there instead.
+ *
+ * The exception to the cost is if the player owns the Booster technology, which allows them to trade in one less
+ * train card (3 instead of 4) if they so wish.
+ *
+ * Discarded trainCards are added to the Player.discardedTrainCards ArrayList, and when the purchased "locomotive" is
+ * spent, it is not added to the Player.discardedTrainCards ArrayList, because it technically does not exist.
  *
  * @author Josh Dratler
  * @author Hamza Memon
@@ -52,8 +54,9 @@ public class ConvertPanel extends JPanel {
     private ImageIcon bottomBackground = ResourceLoader.loadImage("converting_background2.jpg");
     
     /**
-     * Constructs the ConvertPanel JPanel. Its fields are assigned here, as well as the initialization of the JPanel
-     * and the Train Card array and its values.
+     * Constructs the ConvertPanel JPanel.
+     *
+     * Its fields are assigned here, as well as the initialization of the JPanel and the Train Card array.
      */
     public ConvertPanel() {
         setPreferredSize(new Dimension(1280, 1024));
@@ -124,7 +127,7 @@ public class ConvertPanel extends JPanel {
      * Displays and update the value of the Train Cards array as well as the occurrences value, which keeps track of
      * the number of trains that were selected.
      *
-     * @param g instance of Graphics object
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {

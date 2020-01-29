@@ -13,11 +13,11 @@ import java.awt.event.MouseEvent;
 /**
  * Allows the user to view the instructions for both the UK version of Ticket to Ride, and the base game rules.
  *
- * @author Jhoan Osorno
- * @author Pat Milano
- * @author Brian Smith
- * @author Hamza Memon
  * @author Josh Dratler
+ * @author Hamza Memon
+ * @author Patrick Milano
+ * @author Jhoan Esteban Osorno
+ * @author Brian Smith
  * @version (1.0)
  */
 public class InstructionsPanel extends JPanel {
@@ -30,7 +30,9 @@ public class InstructionsPanel extends JPanel {
     private ImageIcon background = ResourceLoader.loadImage("instructions_background.jpg");
     
     /**
-     * Initializes the dimensions of the panel and retrieves the background, arrow, and return button assets
+     * Constructs the instructions panel.
+     *
+     * Initializes the dimensions of the panel and retrieves the background, arrow, and return button assets.
      */
     public InstructionsPanel() {
         setLayout(new BorderLayout());
@@ -64,7 +66,7 @@ public class InstructionsPanel extends JPanel {
     /**
      * Draws the current page selected and the background for the manual
      *
-     * @param g instance of Graphics class
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {

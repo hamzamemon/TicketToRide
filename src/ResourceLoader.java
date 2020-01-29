@@ -4,12 +4,12 @@ import java.io.File;
 /**
  * Utilizes file paths to access images for our trains and buttons
  *
+ * @author Josh Dratler
  * @author Hamza Memon
+ * @author Patrick Milano
  * @author Jhoan Esteban Osorno
  * @author Brian Smith
- * @author Patrick Milano
- * @author Josh Dratler
- * @version 1.0
+ * @version (1.0)
  */
 public class ResourceLoader {
     

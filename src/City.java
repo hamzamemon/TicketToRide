@@ -1,8 +1,10 @@
 /**
- * Enum to store all of th routes in the game.
- * <p>
- * Each route has a country, a start city, an end city, an x array of coordinates, y array of coordinates, color,
- * length, and number of locomotives required to use the route.
+ * Enum to store all of the cities in the game.
+ *
+ * Each city has a:
+ * * Country
+ * * x coordinate
+ * * y coordinate
  *
  * @author Josh Dratler
  * @author Hamza Memon
@@ -77,7 +79,7 @@ public enum City {
     private int y;
     
     /**
-     * Constructs a city enum
+     * Constructs a city enum.
      *
      * @param country the name of the country the city is in
      * @param x,      the x coordinate of the city
@@ -90,7 +92,7 @@ public enum City {
     }
     
     /**
-     * Retrieves the name of the country the city is in
+     * Retrieves the name of the country the city is in.
      *
      * @return the name of the country the city is in
      */
@@ -99,7 +101,7 @@ public enum City {
     }
     
     /**
-     * Retrieves the x coordinate of the city
+     * Retrieves the x coordinate of the city.
      *
      * @return the x coordinate
      */
@@ -108,7 +110,7 @@ public enum City {
     }
     
     /**
-     * Retrieves the y coordinate of the city
+     * Retrieves the y coordinate of the city.
      *
      * @return the y coordinate
      */

@@ -2,7 +2,11 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 
 /**
- * Enum to store all of the train cards. Each train card has a color and an image associated with it.
+ * Enum to store all of the train cards in the game.
+ *
+ * Each train card has a:
+ * * Color
+ * * Image
  *
  * @author Josh Dratler
  * @author Hamza Memon

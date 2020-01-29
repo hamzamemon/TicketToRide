@@ -6,12 +6,12 @@ import java.util.ArrayList;
  * Constructs a player, which has a hand of train cards, destination cards, the technologies, the number of trains
  * and the number of points.
  *
+ * @author Josh Dratler
  * @author Hamza Memon
+ * @author Patrick Milano
  * @author Jhoan Esteban Osorno
  * @author Brian Smith
- * @author Patrick Milano
- * @author Josh Dratler
- * @version 1.0
+ * @version (1.0)
  */
 public class Player {
     

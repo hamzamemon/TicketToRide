@@ -40,7 +40,7 @@ public class BottomPanel extends JPanel {
     private ImageIcon background = ResourceLoader.loadImage("bottomBG.jpg");
     
     /**
-     * Constructor for bottom panel. Creates new panel on bottom of screen
+     * Constructs the bottom panel.
      */
     public BottomPanel() {
         setPreferredSize(new Dimension(1280, 174));
@@ -76,7 +76,7 @@ public class BottomPanel extends JPanel {
     }
     
     /**
-     * Override method to paintComponent. Paints the background.
+     * Paints the background.
      *
      * @param g instance of Graphics.
      */

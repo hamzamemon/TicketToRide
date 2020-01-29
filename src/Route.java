@@ -3,9 +3,16 @@ import java.awt.Polygon;
 
 /**
  * Enum to store all of the routes in the game.
- * <p>
- * Each route has a country, a start city, an end city, an x array of coordinates, y array of coordinates,
- * color, length, and number of locomotives required to use the route.
+ *
+ * Each route has a:
+ * * Country
+ * * Start city
+ * * End city
+ * * x array of coordinates
+ * * y array of coordinates
+ * * Color
+ * * Length
+ * * Number of locomotives required to use the route
  *
  * @author Josh Dratler
  * @author Hamza Memon

@@ -50,8 +50,9 @@ public class LeftPanel extends JPanel {
     private ImageIcon background = ResourceLoader.loadImage("leftBG.jpg");
     
     /**
-     * Constructor to make new instance of LeftPanel. Sets up the destination cards, instruction button,
-     * convert trains to locomotive button, and shuffles the deck. Also creates a panel on the left of the screen
+     * Constructs the left panel.
+     *
+     * Sets up the destination cards, instruction button, convert trains to locomotive button, and shuffles the deck.
      */
     public LeftPanel() {
         setPreferredSize(new Dimension(356, 850));
@@ -101,7 +102,7 @@ public class LeftPanel extends JPanel {
     /**
      * Paints the background.
      *
-     * @param g instance of Graphics class
+     * @param g instance of Graphics.
      */
     @Override
     protected void paintComponent(Graphics g) {
